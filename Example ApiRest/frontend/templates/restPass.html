@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title>Main</title>
+        <link  rel="stylesheet" type="text/css" href="css/input.css">
+        <link  rel="stylesheet" type="text/css" href="css/button.css">
+
+    </head>
+    <body>
+        <center>
+            <br>
+            <br>
+            <h4>Plase enter your addres and your new password plase</h4>
+            <br>
+            <br>
+            <label for="exampleInputEmail1">Email address: </label>
+            <input type="email" name="Email" required class="form-control" id="EmailId" aria-describedby="emailHelp" placeholder="Enter email">
+            <small id="emailHelp" class="form-text text-muted">.</small>
+            <br>
+            <br>
+            <br>
+            <label for="exampleInputPassword1">Password: </label>
+            <input name="Password" required type="password" class="form-control" id="PasswordId" placeholder="Password">
+            <br>
+            <br>
+            <button class="btn btn-green" id="enter" onclick="savePass()" >Save</button>
+        </center>
+        <script src="js/request.js"></script>
+        <script>
+            function savePass(){
+                if(document.getElementById("EmailId").value=="" || document.getElementById("PasswordId").value==""){
+                    alert("Form can't be empty")
+                    return
+                }else{
+                    var data = JSON.stringify({data:{mail:document.getElementById("EmailId").value, password:document.getElementById("PasswordId").value},token:""})
+                    var response = postDataRedirect(data,"https://goosca.herokuapp.com/resetpass","/")
+                }                
+            }
+        </script>
+    </body>  
+</html>

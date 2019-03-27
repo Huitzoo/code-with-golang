@@ -1,0 +1,23 @@
+input {
+    border: none;
+    font-size: 100%;
+    border-bottom: 2px solid blue;   
+}
+
+label, input,#forgotId,#singup{
+    display: inline-block;
+}
+
+label {
+    width: 30%;
+    text-align: right;
+}
+
+label + input {
+    width: 30%;
+    margin: 0 30% 0 5%;
+}
+
+input + input {
+    float: right;
+}
