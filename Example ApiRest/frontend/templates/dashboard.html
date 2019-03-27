@@ -1,0 +1,81 @@
+<html>
+    <head>
+        <title>Dash</title>
+            <!--<meta name="google-signin-client_id" content="532560707184-9hvo4q9rmf050mdtjcg6n1q2n2rs40qt.apps.googleusercontent.com">-->
+            <meta name="google-signin-client_id" content="532560707184-2r0qv126eotoeg11f6lj5slaol4gbng1.apps.googleusercontent.com">
+        <link  rel="stylesheet" type="text/css" href="css/input.css">
+        <link  rel="stylesheet" type="text/css" href="css/button.css">
+        <link  rel="stylesheet" type="text/css" href="css/map.css">
+        <link  rel="stylesheet" type="text/css" href="css/grid.css">
+    </head> 
+    <body>  
+        <center>
+            <h2>Your Address: </h2>
+            <div class="pac-card" id="pac-card">
+                <div id="pac-container">
+                    <input id="pac-input"  class="form-control" name="address" type="text" placeholder="Enter a location">
+                </div>
+                </div>
+                <div id="map"></div>
+                <div id="infowindow-content">
+                <img src="" width="16" height="16" id="place-icon">
+                <span id="place-name"  class="title"></span><br>
+                <span id="place-address"></span>
+            </div>
+            <h2>Your information: </h2>
+            <div id="information">
+                <h5 id="name"></h5>
+                <h5 id="email"></h5>
+                <h5 id="address"> </h5>
+                <h5 id="phone"> </h5>
+            </div>
+            <a id="singup" href="/edit"><button class="btn btn-blue" >Edit Profile</button></a> 
+            <a href="#"><button class="btn btn-green" onclick="singOut()">SignOut</button></a> 
+        </center>   
+        <script src="js/maps.js"></script>
+        <script src="js/request.js"></script>
+        <script src="js/completeDash.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9h75wgTlupY2GGpsivry4OgJNwGeO2p8&libraries=places&callback=initMap" async defer></script>
+        <script>
+            function updateInfo(){ 
+                if(!document.cookie.includes("mail")){
+                    window.location.href="/"                 
+                }
+                var value = document.cookie.split(";")
+                var cookie = null
+                for(var i=0 ; i<value.length ;i++){
+                    if(value[i].includes("@")){
+                        cookie = value[i]
+                    }
+                }
+                var mail = cookie.split("=")
+                var data = JSON.stringify({data:{mail:mail[1].replace(" ",""), password:""},token:"F"}) 
+                //var response = postData(data,"http://localhost:8001/dashboard","")                
+                var response = postData(data,"https://goosca.herokuapp.com/dashboard","")                
+                addInfo(response.payload)
+            }
+            updateInfo();
+        </script>
+        <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
+        <script>
+        function singOut(){
+            try {
+                var auth2 = gapi.auth2.getAuthInstance();
+                    auth2.signOut().then(function () {
+                    document.cookie = "mail"+'=;expires=Thu, 01 Jan 1970 00:00:01 GMT';
+                    window.location.href = "/"
+                });
+            }catch{
+                document.cookie = "mail"+'=;expires=Thu, 01 Jan 1970 00:00:01 GMT';
+                window.location.href = "/"
+            }
+        }
+        function onLoad() {
+            gapi.load('auth2', function() {
+                gapi.auth2.init();
+            });
+        }
+        </script>
+             
+    <body>  
+</html>

@@ -1,0 +1,47 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"path": "appengine/cloudsql",
+			"revision": ""
+		},
+		{
+			"checksumSHA1": "mvlmQYBrNkf2uyAsxbExRyoCGzQ=",
+			"path": "github.com/go-sql-driver/mysql",
+			"revision": "c45f530f8e7fe40f4687eaa50d0c8c5f1b66f9e0",
+			"revisionTime": "2018-12-18T12:36:37Z"
+		},
+		{
+			"checksumSHA1": "EiCCe920mQy/YqANfTUe8WBCGV8=",
+			"path": "github.com/gorilla/handlers",
+			"revision": "7e6a874cdc0efb71a260254cc0e30d5415b6a5bb",
+			"revisionTime": "2018-12-12T23:28:18Z"
+		},
+		{
+			"checksumSHA1": "0qAL9EL+wH7nOIIIveBTRY8va4g=",
+			"path": "github.com/gorilla/mux",
+			"revision": "08e7f807d38d6a870193019bb439056118661505",
+			"revisionTime": "2019-01-08T14:29:30Z"
+		},
+		{
+			"checksumSHA1": "asksIwylfIjaYsF2nMY69jTyxC0=",
+			"path": "github.com/lib/pq",
+			"revision": "9eb73efc1fcc404148b56765b0d3f61d9a5ef8ee",
+			"revisionTime": "2018-10-16T16:26:27Z"
+		},
+		{
+			"checksumSHA1": "GX2hcQP8YqrXH+laJJIxUFsqoxU=",
+			"path": "github.com/lib/pq/oid",
+			"revision": "9eb73efc1fcc404148b56765b0d3f61d9a5ef8ee",
+			"revisionTime": "2018-10-16T16:26:27Z"
+		},
+		{
+			"checksumSHA1": "W/pYxFe8/FHT10/wulwesJsOoUw=",
+			"path": "google.golang.org/appengine/cloudsql",
+			"revision": "e9657d882bb81064595ca3b56cbe2546bbabf7b1",
+			"revisionTime": "2018-12-17T20:59:03Z"
+		}
+	],
+	"rootPath": "goosca"
+}

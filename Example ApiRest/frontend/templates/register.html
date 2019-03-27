@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <title>Main</title>
+        <link  rel="stylesheet" type="text/css" href="css/input.css">
+        <link  rel="stylesheet" type="text/css" href="css/button.css">
+        <link  rel="stylesheet" type="text/css" href="css/map.css">
+    </head>
+    <body>
+        <br>
+        <br>
+        <br>
+        <label for="NameId"> Name: </label>
+        <input name="name" required type="text" class="form-control" id="NameId" placeholder="Enter your name">
+        <br>
+        <br>
+        <label for="EmailId">* Email address: </label>
+        <input type="email" name="Email" required class="form-control" id="EmailId" aria-describedby="emailHelp" placeholder="Enter email">
+        <small id="emailHelp" class="form-text text-muted">.</small>
+        <br>
+        <br>
+        <label for="Password">* Password: </label>
+        <input name="Password" required type="password" class="form-control" id="PasswordId" placeholder="Password">
+        <br>
+        <br>
+        <label for="PhoneId">Phone: </label>
+        <input name="Phone" required type="text" class="form-control" id="PhoneId" placeholder="Enter a Phone">
+        <br>
+        <br>
+        <label for="AddressId">* Address: </label>
+        <input id="pac-input" class="form-control" name="address" type="text" placeholder="Enter a location">
+        <div id="infowindow-content">
+            <img src="" width="16" height="16" id="place-icon">
+            <span id="place-name"  class="title"></span><br>
+            <span id="place-address"></span>
+        </div>
+        <center>
+            <br>
+            <button class="btn btn-green" id="enter"  onclick="registerInfo()" >Save</button>
+            <a href="/"><button class="btn btn-red" >Cancel</button></a>    
+        </center>
+        <script src="js/request.js"></script>
+        <script src="js/address.js"></script>
+        <script>
+            function registerInfo(){
+                var data = {}
+                if(document.getElementById("EmailId").value=="" || document.getElementById("PasswordId").value=="" || document.getElementById("pac-input").value=="" ){
+                    alert("Fields with * are required")
+                }else{
+                    data.id = 0
+                    data.mail = document.getElementById("EmailId").value
+                    data.password = document.getElementById("PasswordId").value
+                    data.name = document.getElementById("NameId").value
+                    data.phone = document.getElementById("PhoneId").value
+                    data.address = document.getElementById("pac-input").value
+                    //postData(JSON.stringify({data:data,token:"F"}),"http://localhost:8001/singup","/dashboard")
+                    postData(JSON.stringify({data:data,token:"F"}),"https://goosca.herokuapp.com/singup","/dashboard")
+                }
+            }
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9h75wgTlupY2GGpsivry4OgJNwGeO2p8&libraries=places&callback=initMap" async defer></script>
+    </body>  
+</html>

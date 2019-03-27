@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <title>Main</title>
+        <!--<meta name="google-signin-client_id" content="532560707184-9hvo4q9rmf050mdtjcg6n1q2n2rs40qt.apps.googleusercontent.com">-->
+        <meta name="google-signin-client_id" content="532560707184-2r0qv126eotoeg11f6lj5slaol4gbng1.apps.googleusercontent.com">
+        <link  rel="stylesheet" type="text/css" href="css/input.css">
+        <link  rel="stylesheet" type="text/css" href="css/button.css">
+    </head>
+    <body>
+        <br>
+        <br>
+        <br>
+        <label for="exampleInputEmail1">Email address: </label>
+        <input type="email" name="Email" required class="form-control" id="EmailId" aria-describedby="emailHelp" placeholder="Enter email">
+        <small id="emailHelp" class="form-text text-muted">.</small>
+        <br>
+        <br>
+        <br>
+        <label for="exampleInputPassword1">Password: </label>
+        <input name="Password" required type="password" class="form-control" id="PasswordId" placeholder="Password">
+        <br>
+        <br>
+        <center>
+            <a id="forgotId" href="/forgot">Forgot your password?</a>
+            <br>
+            <button class="btn btn-green" id="enter"  onclick="singIn()" >Enter</button>
+            <a id="singup" href="/signup"><button class="btn btn-blue" >Sign up</button></a> 
+            <br><br>
+            <div class="g-signin2" data-onsuccess="onSignIn"></div>   
+        </center>
+        <script src="js/request.js"></script>
+        
+        <script>
+            function singIn(){
+                if(document.getElementById("EmailId").value=="" || document.getElementById("PasswordId").value==""){
+                    alert("Form can't be empty")
+                    return
+                
+                }else{
+                    var data = JSON.stringify({data:{mail:document.getElementById("EmailId").value, password:document.getElementById("PasswordId").value},token:"F"})
+                    var response = postData(data,"https://goosca.herokuapp.com/singin","/dashboard")
+                }                
+            }
+        </script>
+        <script>
+            function onSignIn(googleUser) {
+                var id_token = googleUser.getAuthResponse().id_token;
+                var data = JSON.stringify({data:{mail:googleUser.getBasicProfile().getEmail(), password:""},token:"jjj"}) 
+                //var response = postData(data,"http://localhost:8001/googleSignin","/dashboard")
+                var response = postData(data,"https://goosca.herokuapp.com/googleSignin","/dashboard")
+            }    
+        </script>
+        <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+        <script>
+            window.onLoadCallback = function(){
+                var auth = gapi.auth2.getAuthInstance();
+                auth.signOut().then(function(){console.log("ok")})
+            }
+        </script>        
+    </body>  
+</html>

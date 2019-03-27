@@ -1,0 +1,13 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "MQy4AVpMmlY4PJrcElUcgSeAW1g=",
+			"path": "github.com/gorilla/mux",
+			"revision": "08e7f807d38d6a870193019bb439056118661505",
+			"revisionTime": "2019-01-08T14:29:30Z"
+		}
+	],
+	"rootPath": "gooscaf"
+}
